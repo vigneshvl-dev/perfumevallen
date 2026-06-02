@@ -70,6 +70,31 @@ function initHeroSplits() {
 }
 
 /* ==========================================================================
+   1B. DYNAMIC THEME TOGGLE (NOIR VS FEMME PINK)
+   ========================================================================== */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  if (!toggleBtn) return;
+
+  // Load existing theme state from localStorage
+  const savedTheme = localStorage.getItem('vallen-theme');
+  if (savedTheme === 'femme') {
+    document.body.classList.add('theme-femme');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const isFemme = document.body.classList.toggle('theme-femme');
+    if (isFemme) {
+      localStorage.setItem('vallen-theme', 'femme');
+      showToast("🌸 Switched to Vallen Femme Pink Mode");
+    } else {
+      localStorage.setItem('vallen-theme', 'noir');
+      showToast("🖤 Switched to Vallen Homme Noir Mode");
+    }
+  });
+}
+
+/* ==========================================================================
    2. AMBIENT BACKGROUND PARTICLE SYSTEMS (PROMPT 3 BACKGROUND CONCEPT)
    ========================================================================== */
 function initBackgroundCanvases() {
@@ -109,7 +134,10 @@ function initBackgroundCanvases() {
       }
       draw() {
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(226, 232, 240, ${this.alpha})`;
+        const strokeColor = document.body.classList.contains('theme-femme')
+          ? `rgba(251, 113, 133, ${this.alpha * 1.5})`
+          : `rgba(226, 232, 240, ${this.alpha})`;
+        ctx.strokeStyle = strokeColor;
         ctx.lineWidth = this.size;
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x + this.speedX * 2, this.y + this.length);
@@ -122,7 +150,11 @@ function initBackgroundCanvases() {
     }
 
     function animate() {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.15)'; // Deep matte trailing effect
+      if (document.body.classList.contains('theme-femme')) {
+        ctx.fillStyle = 'rgba(255, 245, 246, 0.15)'; // soft rose-water trails
+      } else {
+        ctx.fillStyle = 'rgba(10, 10, 10, 0.15)'; // Deep matte trailing effect
+      }
       ctx.fillRect(0, 0, canvasHomme.width, canvasHomme.height);
       
       particles.forEach(p => {
@@ -171,7 +203,7 @@ function initBackgroundCanvases() {
         ctx.beginPath();
         let grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
         grad.addColorStop(0, hexToRGBA(this.color, this.alpha));
-        grad.addColorStop(1, 'rgba(250, 250, 250, 0)');
+        grad.addColorStop(1, hexToRGBA(this.color, 0));
         ctx.fillStyle = grad;
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -183,8 +215,7 @@ function initBackgroundCanvases() {
     }
 
     function animate() {
-      ctx.fillStyle = '#fafafa';
-      ctx.fillRect(0, 0, canvasFemme.width, canvasFemme.height);
+      ctx.clearRect(0, 0, canvasFemme.width, canvasFemme.height);
       
       particles.forEach(p => {
         p.update();
@@ -710,7 +741,7 @@ function initScentLab() {
       ctx.beginPath();
       let g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
       g.addColorStop(0, hexToRGBA(this.color, this.alpha));
-      g.addColorStop(1, 'rgba(0,0,0,0)');
+      g.addColorStop(1, document.body.classList.contains('theme-femme') ? 'rgba(255, 240, 242, 0)' : 'rgba(0,0,0,0)');
       ctx.fillStyle = g;
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
@@ -782,7 +813,11 @@ function initScentLab() {
 
   // Lab main animation loop
   function drawLab() {
-    ctx.fillStyle = 'rgba(13, 13, 13, 0.2)'; // trail effect
+    if (document.body.classList.contains('theme-femme')) {
+      ctx.fillStyle = 'rgba(255, 240, 242, 0.2)'; // rose water trail
+    } else {
+      ctx.fillStyle = 'rgba(13, 13, 13, 0.2)'; // trail effect
+    }
     ctx.fillRect(0, 0, width, height);
 
     const vC = parseInt(slideCardamom.value);
@@ -790,7 +825,9 @@ function initScentLab() {
     const vL = parseInt(slideLeather.value);
 
     // Draw connecting nodes in chemistry layout style
-    ctx.strokeStyle = 'rgba(255,255,255,0.03)';
+    ctx.strokeStyle = document.body.classList.contains('theme-femme')
+      ? 'rgba(251, 113, 133, 0.08)'
+      : 'rgba(255,255,255,0.03)';
     ctx.lineWidth = 0.5;
     for (let i = 0; i < chemicalParticles.length; i++) {
       for (let j = i + 1; j < chemicalParticles.length; j++) {
