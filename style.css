@@ -10,6 +10,10 @@
   
   /* Primary Accents */
   --accent-gold: #d4af37; /* Luxury gold */
+  /* Palette A – Black / Gold / Cream */
+  --primary-bg: #0a0a0a;          /* black */
+  --primary-accent: #d4af37;      /* gold */
+  --secondary-bg: #f8f5ed;        /* cream */
   
   /* Homme (Noir) Theme */
   --homme-bg: #0a0a0a;
@@ -517,7 +521,7 @@ section {
 }
 
 .section-light {
-  background-color: var(--femme-bg);
+  background-color: var(--secondary-bg);
   color: var(--femme-text);
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -535,7 +539,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.4em;
   margin-bottom: 1rem;
-  color: var(--femme-accent);
+  color: var(--primary-accent);
 }
 
 .section-title {
@@ -613,6 +617,47 @@ section {
   width: 100%;
   height: 100%;
   z-index: 1;
+}
+
+.bottle-img.hero-bottle {
+  width: 70%;
+  max-height: 80vh;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Left panel cinematic smoke overlay */
+.panel-homme::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.15), transparent 70%);
+  opacity: 0.4;
+  animation: smokeMove 8s infinite ease-out;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes smokeMove {
+  0% { transform: translateY(0) scale(1); opacity:0.4; }
+  100% { transform: translateY(-150px) scale(1.5); opacity:0; }
+}
+
+/* Right panel pearl particle overlay */
+.panel-femme::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.12) 10%, transparent 30%);
+  background-size: 30px 30px;
+  animation: pearlFloat 6s infinite linear;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes pearlFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
 }
 
 .bottle-img-back {
