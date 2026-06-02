@@ -1520,3 +1520,301 @@ footer {
     gap: 1rem;
   }
 }
+
+/* ==========================================================================
+   THEME TOGGLE BUTTON & DYNAMIC FEMME PINK THEME OVERRIDES
+   ========================================================================== */
+
+/* Theme Toggle Button Layout */
+.theme-toggle-btn {
+  margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transition: var(--transition-smooth);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+/* Global Theme Overrides for Femme Pink Theme */
+body.theme-femme {
+  /* Dynamic Design Tokens for light rose gold / pink amber cosmetics theme */
+  --homme-bg: #fff5f6;
+  --homme-surface: rgba(255, 240, 242, 0.85);
+  --homme-border: rgba(251, 113, 133, 0.18);
+  --homme-accent: #fb7185;
+  --homme-glow: rgba(251, 113, 133, 0.06);
+  --homme-text: #1c1917;
+  --homme-text-muted: #887e79;
+
+  background-color: var(--homme-bg);
+  color: var(--homme-text);
+  transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+/* Scrollbar theme adjustments */
+body.theme-femme ::-webkit-scrollbar-track {
+  background: #fff5f6;
+}
+body.theme-femme ::-webkit-scrollbar-thumb {
+  background: #fda4af;
+}
+body.theme-femme ::-webkit-scrollbar-thumb:hover {
+  background: #fb7185;
+}
+
+/* Header & Nav overrides */
+body.theme-femme header {
+  background: rgba(255, 245, 246, 0.8);
+  border-bottom-color: rgba(251, 113, 133, 0.15);
+}
+
+body.theme-femme header.scrolled {
+  background: rgba(255, 245, 246, 0.95);
+  border-bottom-color: rgba(251, 113, 133, 0.25);
+}
+
+body.theme-femme .brand-logo {
+  color: #1c1917;
+  text-shadow: 0 0 15px rgba(251, 113, 133, 0.15);
+}
+
+body.theme-femme .brand-logo span {
+  color: var(--femme-text-muted);
+}
+
+body.theme-femme .nav-link {
+  color: rgba(28, 25, 23, 0.75);
+}
+
+body.theme-femme .nav-link:hover {
+  color: #e11d48;
+}
+
+body.theme-femme .nav-link::after {
+  background-color: #e11d48;
+}
+
+body.theme-femme .icon-btn {
+  color: #1c1917;
+}
+
+body.theme-femme .theme-toggle-btn {
+  background: rgba(251, 113, 133, 0.06);
+  border-color: rgba(251, 113, 133, 0.18);
+  color: #e11d48;
+}
+
+body.theme-femme .theme-toggle-btn:hover {
+  background: rgba(251, 113, 133, 0.12);
+  border-color: rgba(251, 113, 133, 0.35);
+  box-shadow: 0 0 15px rgba(251, 113, 133, 0.2);
+}
+
+/* Sections overrides */
+body.theme-femme .section-dark {
+  background-color: var(--homme-bg);
+  color: var(--homme-text);
+  transition: var(--transition-smooth);
+}
+
+body.theme-femme #scent-lab {
+  border-top: 1px solid rgba(251, 113, 133, 0.15);
+  background: #ffeef0;
+}
+
+body.theme-femme .scent-lab-wrapper {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(251, 113, 133, 0.2);
+  box-shadow: 0 15px 35px rgba(251, 113, 133, 0.05);
+}
+
+body.theme-femme .lab-visualizer {
+  background: #fff0f2;
+}
+
+body.theme-femme .lab-controls {
+  border-left-color: rgba(251, 113, 133, 0.15);
+}
+
+body.theme-femme .lab-title,
+body.theme-femme .slider-item {
+  color: var(--homme-text);
+}
+
+body.theme-femme .lab-slider {
+  background: rgba(251, 113, 133, 0.2);
+}
+
+/* Products and collections overrides */
+body.theme-femme .product-tag {
+  color: var(--homme-text-muted);
+}
+
+body.theme-femme .note-card {
+  border-color: rgba(251, 113, 133, 0.2);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 5px 15px rgba(251, 113, 133, 0.03);
+}
+
+body.theme-femme .note-value {
+  color: var(--homme-text);
+}
+
+body.theme-femme .btn-primary {
+  background: #e11d48;
+  color: #ffffff;
+}
+
+body.theme-femme .btn-primary:hover {
+  background: #be123c;
+  box-shadow: 0 10px 20px rgba(251, 113, 133, 0.35);
+}
+
+body.theme-femme .btn-secondary {
+  border-color: rgba(251, 113, 133, 0.35);
+  color: #e11d48;
+}
+
+body.theme-femme .btn-secondary:hover {
+  border-color: #e11d48;
+  background: rgba(251, 113, 133, 0.05);
+}
+
+/* Meet the Founder Override */
+body.theme-femme .founder-section {
+  background: #fff0f2;
+  color: var(--homme-text);
+  transition: var(--transition-smooth);
+}
+
+body.theme-femme .founder-quote {
+  color: #1c1917;
+}
+
+body.theme-femme .founder-quote::before {
+  color: rgba(251, 113, 133, 0.25);
+}
+
+body.theme-femme .founder-bio {
+  color: var(--homme-text-muted);
+}
+
+body.theme-femme .founder-frame {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(251, 113, 133, 0.2);
+}
+
+/* Footer Section Overrides */
+body.theme-femme footer {
+  background: #ffe5e8;
+  color: #1c1917;
+  border-top-color: rgba(251, 113, 133, 0.15);
+  transition: var(--transition-smooth);
+}
+
+body.theme-femme .footer-desc,
+body.theme-femme .footer-links a,
+body.theme-femme .newsletter-note,
+body.theme-femme .copyright,
+body.theme-femme .footer-meta-links a {
+  color: var(--homme-text-muted);
+}
+
+body.theme-femme .footer-links a:hover,
+body.theme-femme .footer-meta-links a:hover {
+  color: #e11d48;
+}
+
+body.theme-femme .social-circle {
+  border-color: rgba(251, 113, 133, 0.25);
+  color: rgba(28, 25, 23, 0.6);
+}
+
+body.theme-femme .social-circle:hover {
+  background: #e11d48;
+  color: #ffffff;
+  border-color: #e11d48;
+}
+
+body.theme-femme .newsletter-input-group {
+  border-bottom-color: rgba(251, 113, 133, 0.3);
+}
+
+body.theme-femme .newsletter-input {
+  color: #1c1917;
+}
+
+body.theme-femme .newsletter-input::placeholder {
+  color: #a3958f;
+}
+
+body.theme-femme .newsletter-submit {
+  color: #1c1917;
+}
+
+body.theme-femme .newsletter-submit:hover {
+  color: #e11d48;
+}
+
+body.theme-femme .footer-bottom {
+  border-top-color: rgba(251, 113, 133, 0.15);
+}
+
+/* Mini Cart Drawer Overrides */
+body.theme-femme .cart-drawer {
+  background: #fff5f6;
+  border-left-color: rgba(251, 113, 133, 0.15);
+  color: #1c1917;
+}
+
+body.theme-femme .cart-header {
+  border-bottom-color: rgba(251, 113, 133, 0.1);
+}
+
+body.theme-femme .close-cart-btn {
+  color: #1c1917;
+}
+
+body.theme-femme .cart-empty-message {
+  color: var(--homme-text-muted);
+}
+
+body.theme-femme .cart-item {
+  border-bottom-color: rgba(251, 113, 133, 0.08);
+}
+
+body.theme-femme .cart-item-type {
+  color: var(--homme-text-muted);
+}
+
+body.theme-femme .qty-control {
+  border-color: rgba(251, 113, 133, 0.2);
+}
+
+body.theme-femme .qty-btn,
+body.theme-femme .qty-val {
+  color: #1c1917;
+}
+
+body.theme-femme .cart-footer {
+  border-top-color: rgba(251, 113, 133, 0.1);
+  background: #ffeef0;
+}
+
+body.theme-femme .toast-notification {
+  background: rgba(255, 245, 246, 0.95);
+  border-color: #fb7185;
+  color: #1c1917;
+}
