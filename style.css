@@ -264,7 +264,7 @@ body:not(.theme-femme) header:not(.scrolled) .theme-toggle-btn:hover {
 }
 
 .panel-femme {
-  background: linear-gradient(270deg, #ffe6eb, #fff0f2, #ffd6e0, #ffe6f0);
+  background: linear-gradient(135deg, #ffe6eb, #fff0f2, #ffd6e0, #ffe6f0);
   background-size: 400% 400%;
   animation: luxuryGradient 15s ease infinite;
   color: var(--femme-text);
