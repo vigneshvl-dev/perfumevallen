@@ -244,11 +244,7 @@ header.scrolled {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-/* Femme Panel Pink Gradient */
-body.theme-femme .panel-femme {
-  background: linear-gradient(135deg, #ffe6f0, #ffccd9);
-  color: var(--femme-text);
-}
+
 /* Expand panel on hover */
 .hero-split-container:hover .hero-panel {
   flex: 0.7;
@@ -1631,6 +1627,46 @@ body.theme-femme .theme-toggle-btn:hover {
   background: rgba(251, 113, 133, 0.12);
   border-color: rgba(251, 113, 133, 0.35);
   box-shadow: 0 0 15px rgba(251, 113, 133, 0.2);
+}
+
+/* Svg Icon displays based on active theme class */
+body.theme-femme .theme-toggle-btn .icon-noir {
+  display: none !important;
+}
+body.theme-femme .theme-toggle-btn .icon-femme {
+  display: block !important;
+}
+
+/* Homme Panel override when switching to Femme Pink theme */
+body.theme-femme .panel-homme {
+  background: linear-gradient(135deg, #fff0f2, #ffe4e8);
+  border-right-color: rgba(251, 113, 133, 0.15);
+}
+
+body.theme-femme .panel-homme .panel-title {
+  color: var(--femme-text);
+  text-shadow: 0 0 30px rgba(251, 113, 133, 0.1);
+}
+
+body.theme-femme .panel-homme .panel-desc {
+  color: var(--femme-text-muted);
+}
+
+body.theme-femme .panel-homme .panel-sub {
+  color: var(--femme-text-muted);
+}
+
+body.theme-femme .panel-homme .luxury-btn {
+  border: 1px solid var(--femme-text);
+  color: var(--femme-text);
+}
+
+body.theme-femme .panel-homme .luxury-btn::before {
+  background: var(--femme-text);
+}
+
+body.theme-femme .panel-homme .luxury-btn:hover {
+  color: #ffffff;
 }
 
 /* Sections overrides */

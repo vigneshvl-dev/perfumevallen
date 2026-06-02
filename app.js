@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Main interactive elements
   initHeroSplits();
+  initThemeToggle();
   initBackgroundCanvases();
   initProductCanvases();
   initScentLab();
