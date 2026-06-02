@@ -237,7 +237,11 @@ header.scrolled {
   background-color: var(--femme-bg);
   color: var(--femme-text);
 }
-
+/* Femme Panel Pink Gradient */
+body.theme-femme .panel-femme {
+  background: linear-gradient(135deg, #ffe6f0, #ffccd9);
+  color: var(--femme-text);
+}
 /* Expand panel on hover */
 .hero-split-container:hover .hero-panel {
   flex: 0.7;
