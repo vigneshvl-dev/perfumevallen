@@ -95,6 +95,37 @@ header.scrolled {
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
+/* Custom Header Contrast Fixes for transparent top header over split dark/pink screen */
+body:not(.theme-femme) header:not(.scrolled) .nav-links li:nth-child(3) a,
+body:not(.theme-femme) header:not(.scrolled) .nav-links li:nth-child(4) a {
+  color: var(--femme-text) !important;
+}
+
+body:not(.theme-femme) header:not(.scrolled) .nav-links li:nth-child(3) a:hover,
+body:not(.theme-femme) header:not(.scrolled) .nav-links li:nth-child(4) a:hover {
+  color: var(--femme-accent) !important;
+}
+
+body:not(.theme-femme) header:not(.scrolled) .nav-links li:nth-child(3) a::after,
+body:not(.theme-femme) header:not(.scrolled) .nav-links li:nth-child(4) a::after {
+  background-color: var(--femme-accent) !important;
+}
+
+body:not(.theme-femme) header:not(.scrolled) .nav-actions .icon-btn {
+  color: var(--femme-text) !important;
+}
+
+body:not(.theme-femme) header:not(.scrolled) .theme-toggle-btn {
+  border-color: rgba(251, 113, 133, 0.25) !important;
+  background: rgba(251, 113, 133, 0.05) !important;
+}
+
+body:not(.theme-femme) header:not(.scrolled) .theme-toggle-btn:hover {
+  background: rgba(251, 113, 133, 0.12) !important;
+  border-color: rgba(251, 113, 133, 0.45) !important;
+  box-shadow: 0 0 12px rgba(251, 113, 133, 0.15) !important;
+}
+
 .logo-container {
   display: flex;
   align-items: center;
