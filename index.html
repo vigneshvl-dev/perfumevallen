@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALLEN | High-End Scent Chemistry & Luxury Atomizers</title>
+  <meta name="description" content="Explore Vallen Homme and Vallen Femme, signature luxury pill-shaped spray atomizers formulated in zero-gravity with premium scent chemistry.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Premium Header & Nav -->
+  <header id="site-header">
+    <div class="logo-container">
+      <a href="#" class="brand-logo">
+        VALLEN
+        <span>LABORATORIES</span>
+      </a>
+    </div>
+    
+    <ul class="nav-links">
+      <li><a href="#hero" class="nav-link">Home</a></li>
+      <li><a href="#collection" class="nav-link">Collection</a></li>
+      <li><a href="#scent-lab" class="nav-link">Scent Lab</a></li>
+      <li><a href="#founder" class="nav-link">The Founder</a></li>
+    </ul>
+    
+    <div class="nav-actions">
+      <button class="icon-btn" id="cart-icon-btn" aria-label="Open Cart">
+        <!-- Modern Shopping Bag Icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 6h18M16 10a4 4 0 0 1-8 0" stroke-linecap="round"/>
+        </svg>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Interactive Split Screen Hero Section (Prompt 3 Concept) -->
+  <section id="hero" class="hero-split-container" style="padding: 0;">
+    
+    <!-- Homme (Noir) Hero Panel -->
+    <div class="hero-panel panel-homme">
+      <canvas id="homme-bg-canvas" class="panel-canvas"></canvas>
+      <div class="panel-content">
+        <span class="panel-sub">VALLEN HOMME / NOIR</span>
+        <h1 class="panel-title">THE NOIR DISRUPTION</h1>
+        <p class="panel-desc">A gravity-defying collision of matte obsidian shards, vulcanized stone energy, and a high-velocity stream of cold slate particles.</p>
+        <a href="#homme-product" class="luxury-btn">Explore Noir</a>
+      </div>
+    </div>
+    
+    <!-- Split Divider Emblem -->
+    <div class="split-divider" id="split-divider-btn">
+      <div class="divider-emblem">VL</div>
+    </div>
+    
+    <!-- Femme Hero Panel -->
+    <div class="hero-panel panel-femme">
+      <canvas id="femme-bg-canvas" class="panel-canvas"></canvas>
+      <div class="panel-content">
+        <span class="panel-sub">VALLEN FEMME</span>
+        <h1 class="panel-title">THE PEARL ORBIT</h1>
+        <p class="panel-desc">Weightless floating rose gold refractions, drifting pink mist caustics, and swirling clouds of translucent pearl droplets.</p>
+        <a href="#femme-product" class="luxury-btn">Explore Femme</a>
+      </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <div class="scroll-indicator" onclick="document.getElementById('collection').scrollIntoView({ behavior: 'smooth' })">
+      <span>Discover Scent</span>
+      <svg viewBox="0 0 24 24">
+        <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Symmetrical Collections Section -->
+  <section id="collection" class="section-dark">
+    <div class="section-header">
+      <span class="section-tag">Signature Atomizers</span>
+      <h2 class="section-title">THE SYMMETRY LINE</h2>
+    </div>
+
+    <div class="product-showcase-container">
+      
+      <!-- Product 1: Vallen Homme (Noir) (Prompt 1 Concept) -->
+      <div class="product-row" id="homme-product">
+        <div class="product-visual-wrapper homme-visual">
+          <canvas id="homme-product-canvas" class="interactive-product-canvas"></canvas>
+        </div>
+        <div class="product-info-wrapper">
+          <span class="product-tag">Fragrance No. 01 / Noir</span>
+          <h3 class="product-name">VALLEN HOMME</h3>
+          <div class="product-price">₹14,999.00</div>
+          <p class="product-desc">
+            An industrial masterpiece featuring a minimalist matte obsidian black spray canister with razor-sharp platinum trim. Emitting a high-speed frozen spray mist of dark metallic fragments that float weightlessly, defying gravity. A scent structured on volcanic lab chemistry.
+          </p>
+          
+          <div class="notes-grid">
+            <div class="note-card">
+              <div class="note-label">Top Note</div>
+              <div class="note-value">Obsidian Saffron</div>
+            </div>
+            <div class="note-card">
+              <div class="note-label">Heart Note</div>
+              <div class="note-value">Cold Slate Leather</div>
+            </div>
+            <div class="note-card">
+              <div class="note-label">Base Note</div>
+              <div class="note-value">Volcanic Vetiver</div>
+            </div>
+          </div>
+          
+          <div class="purchase-actions">
+            <button class="btn-primary" onclick="addCartItem('vallen-homme', 'Vallen Homme', 'Premium Perfume (Noir)', 14999.00, 'https://i.postimg.cc/mkNG3pWJ/shopping.webp')">
+              Acquire Scent
+            </button>
+            <button class="btn-secondary" onclick="triggerHommeSpray()">
+              Trigger Atomizer Mist
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2: Vallen Femme (Prompt 2 Concept) -->
+      <div class="product-row reverse" id="femme-product">
+        <div class="product-visual-wrapper femme-visual">
+          <canvas id="femme-product-canvas" class="interactive-product-canvas"></canvas>
+        </div>
+        <div class="product-info-wrapper">
+          <span class="product-tag">Fragrance No. 02 / Pearl</span>
+          <h3 class="product-name">VALLEN FEMME</h3>
+          <div class="product-price">₹14,999.00</div>
+          <p class="product-desc">
+            A high-end luxury cosmetic marvel floating in a zero-gravity cloud of warm pink amber mist. Cast in polished rose gold and bright reflective chrome, this sleek pill atomizer triggers caustics that shimmer elegantly against a clean, luminous pearl white studio landscape.
+          </p>
+          
+          <div class="notes-grid">
+            <div class="note-card">
+              <div class="note-label">Top Note</div>
+              <div class="note-value">Blush Nectarine</div>
+            </div>
+            <div class="note-card">
+              <div class="note-label">Heart Note</div>
+              <div class="note-value">Translucent Rose</div>
+            </div>
+            <div class="note-card">
+              <div class="note-label">Base Note</div>
+              <div class="note-value">Luminous Amber</div>
+            </div>
+          </div>
+          
+          <div class="purchase-actions">
+            <button class="btn-primary" onclick="addCartItem('vallen-femme', 'Vallen Femme', 'Premium Perfume (Pearl)', 14999.00, 'https://i.postimg.cc/mkNG3pWJ/shopping.webp')">
+              Acquire Scent
+            </button>
+            <button class="btn-secondary" onclick="triggerFemmeSpray()">
+              Trigger Atomizer Mist
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Scent Chemistry Laboratory (Chemistry Lab Aesthetic) -->
+  <section id="scent-lab" class="section-dark" style="border-top: 1px solid rgba(255, 255, 255, 0.05); background: #080808;">
+    <div class="section-header">
+      <span class="section-tag">Molecular Synthesis</span>
+      <h2 class="section-title">THE CHEMISTRY LABORATORY</h2>
+    </div>
+
+    <div class="scent-lab-wrapper">
+      <div class="lab-visualizer">
+        <canvas id="scent-lab-canvas" class="lab-canvas"></canvas>
+        <div class="lab-status-display">
+          <div class="lab-status-label">Synthesized Compound</div>
+          <div class="lab-status-value" id="formula-name-display">Noir Pearl Absolute</div>
+          <div class="lab-status-label" style="margin-top: 0.25rem;">Batch Code</div>
+          <div class="lab-status-value" id="formula-code-display" style="font-size: 0.7rem; color: #a3a3a3;">VL-S50A50L50</div>
+        </div>
+      </div>
+      
+      <div class="lab-controls">
+        <div>
+          <span class="lab-subtitle">Scent Engineering</span>
+          <h3 class="lab-title">FORMULA SYNTHESIZER</h3>
+          <p class="lab-desc">Balance the raw molecular notes below to dynamically generate a customized brand scent structure. The canvas visualizer will react in real time to the chemistry.</p>
+        </div>
+
+        <div class="slider-group">
+          <!-- Cardamom (Homme Essence) -->
+          <div class="slider-item">
+            <div class="slider-header">
+              <span class="slider-name">Cardamom (Noir Essence)</span>
+              <span class="slider-value" id="val-cardamom">50%</span>
+            </div>
+            <input type="range" min="10" max="90" value="50" class="lab-slider" id="slide-cardamom">
+          </div>
+          
+          <!-- Amber (Femme Floral) -->
+          <div class="slider-item">
+            <div class="slider-header">
+              <span class="slider-name">Pink Amber (Femme Floral)</span>
+              <span class="slider-value" id="val-amber">50%</span>
+            </div>
+            <input type="range" min="10" max="90" value="50" class="lab-slider" id="slide-amber">
+          </div>
+          
+          <!-- Obsidian Leather -->
+          <div class="slider-item">
+            <div class="slider-header">
+              <span class="slider-name">Obsidian Leather (Deep Fume)</span>
+              <span class="slider-value" id="val-leather">50%</span>
+            </div>
+            <input type="range" min="10" max="90" value="50" class="lab-slider" id="slide-leather">
+          </div>
+        </div>
+
+        <button class="synthesize-btn" id="synthesize-scent-btn">
+          Synthesize Scent Blend
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Meet the Founder Section: Vignesh V L -->
+  <section id="founder" class="founder-section">
+    <div class="founder-container">
+      <div class="founder-media-wrapper">
+        <div class="founder-frame">
+          <img src="https://i.postimg.cc/BQBq2bqS/IMG-33081.jpg" class="founder-img" alt="Vignesh V L - Founder of Vallen">
+        </div>
+      </div>
+      <div class="founder-info">
+        <span class="section-tag" style="text-align: left; margin: 0;">Visionary Core</span>
+        <h2 class="section-title" style="font-size: 2.2rem; text-align: left; margin-bottom: 1.5rem; letter-spacing: 0.1em; width: 100%;">MEET THE FOUNDER</h2>
+        
+        <p class="founder-quote">
+          “Perfume is not merely a cosmetic accessory; it is molecular architecture suspended in time, defying gravity and leaving a silent, permanent trail of character.”
+        </p>
+        
+        <div class="founder-bio">
+          <p>
+            Vallen was founded under the singular direction of <strong>Vignesh V L</strong>. Inspired by high-end chemistry laboratories, volcanic geology, and modern minimalist architecture, Vignesh sought to create a premium fragrance system that shatters expectations of physical form.
+          </p>
+          <p>
+            Under his vision, Vallen engineered the pill-shaped metal atomizer - a luxury capsule that floats gracefully and defies standard design rules. Every droplet synthesized under his seal represents absolute visual and aromatic luxury.
+          </p>
+        </div>
+
+        <div class="founder-signature-block">
+          <div class="founder-name">Vignesh V L</div>
+          <div class="founder-title">Founder & Chief Scent Architect</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VA-Secure Payment & Trust badges -->
+    <div class="checkout-trust-area">
+      <div class="trust-title">SECURED PAYMENT GATEWAYS & EXPRESS COURIER</div>
+      <div class="trust-badges-grid">
+        <!-- Google Pay / GPay -->
+        <div class="trust-badge-item">
+          <div class="trust-icon-box">
+            <!-- Secure Check SVG -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <span>GOOGLE PAY</span>
+        </div>
+        
+        <!-- Paytm -->
+        <div class="trust-badge-item">
+          <div class="trust-icon-box">
+            <!-- Mobile SVG -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
+          <span>PAYTM SECURE</span>
+        </div>
+
+        <!-- PayPal -->
+        <div class="trust-badge-item">
+          <div class="trust-icon-box">
+            <!-- Card SVG -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          <span>PAYPAL CERTIFIED</span>
+        </div>
+
+        <!-- Fast Express Delivery -->
+        <div class="trust-badge-item">
+          <div class="trust-icon-box">
+            <!-- Fast Truck Delivery SVG -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <span>EXPRESS COURIER</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Brand Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand-info">
+        <a href="#" class="brand-logo" style="text-shadow: none;">VALLEN</a>
+        <p class="footer-desc">Crafting premium zero-gravity scent capsules and chemical formulas for high-end collectors worldwide.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-circle" aria-label="Instagram">IG</a>
+          <a href="#" class="social-circle" aria-label="X Platform">X</a>
+          <a href="#" class="social-circle" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">COLLECTIONS</div>
+        <ul class="footer-links">
+          <li><a href="#homme-product">Vallen Homme / Noir</a></li>
+          <li><a href="#femme-product">Vallen Femme / Pearl</a></li>
+          <li><a href="#scent-lab">Scent Lab Synthesizer</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">SUPPORT</div>
+        <ul class="footer-links">
+          <li><a href="#">Express Delivery Info</a></li>
+          <li><a href="#">Returns & Replacements</a></li>
+          <li><a href="#">Corporate Gifting</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">NEWSLETTER</div>
+        <div class="newsletter-form">
+          <div class="newsletter-input-group">
+            <input type="email" placeholder="ENTER YOUR EMAIL" class="newsletter-input" aria-label="Email Address">
+            <button class="newsletter-submit" aria-label="Subscribe">→</button>
+          </div>
+          <span class="newsletter-note">Receive chemical release notifications.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="copyright">&copy; 2026 VALLEN INC. All English Rights Reserved.</div>
+      <div class="footer-meta-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sliding Mini-Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <div class="cart-title">YOUR SELECTIONS</div>
+      <button class="close-cart-btn" id="close-cart-btn" aria-label="Close Cart">&times;</button>
+    </div>
+    
+    <div class="cart-items-container" id="cart-items-container">
+      <div class="cart-empty-message">Your shopping cart is currently empty. Add Vallen Homme or Vallen Femme signature sprays to experience luxury scent chemistry.</div>
+    </div>
+    
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span class="summary-label">Subtotal</span>
+        <span class="summary-value" id="cart-total-val">₹0.00</span>
+      </div>
+      <button class="checkout-btn" id="checkout-btn">Secure Checkout</button>
+      <div class="cart-payment-methods">
+        <span style="font-size: 0.65rem; letter-spacing: 0.15em; color: #a3a3a3;">GPAY • PAYTM • PAYPAL • EXPRESS DELIVERY</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
