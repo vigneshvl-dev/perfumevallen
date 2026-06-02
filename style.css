@@ -232,10 +232,17 @@ header.scrolled {
   border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Femme Panel */
 .panel-femme {
-  background-color: var(--femme-bg);
+  background: linear-gradient(270deg, #ffe6eb, #fff0f2, #ffd6e0, #ffe6f0);
+  background-size: 400% 400%;
+  animation: luxuryGradient 15s ease infinite;
   color: var(--femme-text);
+}
+
+@keyframes luxuryGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 /* Femme Panel Pink Gradient */
 body.theme-femme .panel-femme {
