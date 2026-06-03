@@ -51,6 +51,14 @@
         </svg>
       </button>
 
+      <!-- Wishlist Icon Button -->
+      <button class="icon-btn wishlist-icon-btn" id="wishlist-icon-btn" aria-label="Open Wishlist" title="Your Wishlist">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="wishlist-count" id="wishlist-count">0</span>
+      </button>
+
       <button class="icon-btn" id="cart-icon-btn" aria-label="Open Cart">
         <!-- Modern Shopping Bag Icon -->
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -132,9 +140,26 @@
   <!-- Symmetrical Collections Section -->
   <section id="collection" class="section-dark">
     <div class="section-header">
-      <span class="section-tag">Signature Atomizers</span>
-      <h2 class="section-title">THE SYMMETRY LINE</h2>
-    </div>
+  <span class="section-tag">Signature Atomizers</span>
+  <h2 class="section-title">THE SYMMETRY LINE</h2>
+</div>
+
+<!-- Catalog Controls: Search, Category Filter, Sort -->
+<div class="catalog-controls">
+  <input type="search" id="catalog-search" placeholder="Search products..." class="catalog-search-input" />
+  <select id="catalog-category" class="catalog-filter-select">
+    <option value="all">All Categories</option>
+    <option value="homme">Homme (Noir)</option>
+    <option value="femme">Femme (Pearl)</option>
+  </select>
+  <select id="catalog-sort" class="catalog-sort-select">
+    <option value="default">Default</option>
+    <option value="price-asc">Price: Low to High</option>
+    <option value="price-desc">Price: High to Low</option>
+    <option value="name-asc">Name A-Z</option>
+    <option value="name-desc">Name Z-A</option>
+  </select>
+</div>
 
     <div class="product-showcase-container">
       
@@ -167,11 +192,15 @@
           </div>
           
           <div class="purchase-actions">
-            <button class="btn-primary" onclick="addCartItem('vallen-homme', 'Vallen Homme', 'Premium Perfume (Noir)', 14999.00, 'https://i.postimg.cc/mkNG3pWJ/shopping.webp')">
+            <span class="stock-badge" id="stock-badge-homme"></span>
+            <button class="btn-primary" id="btn-buy-homme" onclick="addCartItem('vallen-homme', 'Vallen Homme', 'Premium Perfume (Noir)', 14999.00, 'https://i.postimg.cc/mkNG3pWJ/shopping.webp')">
               Acquire Scent
             </button>
             <button class="btn-secondary" onclick="triggerHommeSpray()">
               Trigger Atomizer Mist
+            </button>
+            <button class="wishlist-heart-btn" id="wishlist-btn-homme" onclick="toggleWishlist('vallen-homme', 'Vallen Homme', 14999, 'Noir')" aria-label="Add to Wishlist" title="Add to Wishlist">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             </button>
           </div>
         </div>
@@ -206,11 +235,15 @@
           </div>
           
           <div class="purchase-actions">
-            <button class="btn-primary" onclick="addCartItem('vallen-femme', 'Vallen Femme', 'Premium Perfume (Pearl)', 14999.00, 'https://i.postimg.cc/mkNG3pWJ/shopping.webp')">
+            <span class="stock-badge" id="stock-badge-femme"></span>
+            <button class="btn-primary" id="btn-buy-femme" onclick="addCartItem('vallen-femme', 'Vallen Femme', 'Premium Perfume (Pearl)', 14999.00, 'https://i.postimg.cc/mkNG3pWJ/shopping.webp')">
               Acquire Scent
             </button>
             <button class="btn-secondary" onclick="triggerFemmeSpray()">
               Trigger Atomizer Mist
+            </button>
+            <button class="wishlist-heart-btn" id="wishlist-btn-femme" onclick="toggleWishlist('vallen-femme', 'Vallen Femme', 14999, 'Pearl')" aria-label="Add to Wishlist" title="Add to Wishlist">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
             </button>
           </div>
         </div>
@@ -445,6 +478,21 @@
     </div>
   </div>
 
+  <!-- Wishlist Drawer -->
+  <div class="wishlist-drawer-overlay" id="wishlist-drawer-overlay"></div>
+  <div class="wishlist-drawer" id="wishlist-drawer">
+    <div class="cart-header">
+      <div class="cart-title">❤ YOUR WISHLIST</div>
+      <button class="close-cart-btn" id="close-wishlist-btn" aria-label="Close Wishlist">&times;</button>
+    </div>
+    <div class="cart-items-container" id="wishlist-items-container">
+      <div class="cart-empty-message" id="wishlist-empty-msg">Your wishlist is empty. Click the heart on any product to save it here.</div>
+    </div>
+    <div class="cart-footer">
+      <button class="checkout-btn" id="wishlist-add-all-btn" style="background: linear-gradient(135deg,#fb7185,#f43f5e);">Add All to Cart</button>
+    </div>
+  </div>
+
   <!-- Cinematic Concepts Modal -->
   <div class="cinematic-drawer-overlay" id="cinematic-drawer-overlay"></div>
   <div class="cinematic-drawer" id="cinematic-drawer">
@@ -501,6 +549,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
