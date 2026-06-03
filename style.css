@@ -2015,3 +2015,280 @@ body.theme-femme .toast-notification {
   border-color: #fb7185;
   color: #1c1917;
 }
+
+/* ==========================================================================
+   CINEMATIC CONCEPTS SHOWCASE
+   ========================================================================== */
+.cinematic-btn {
+  margin-right: 0.5rem;
+}
+
+.cinematic-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-smooth);
+}
+
+.cinematic-drawer-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.cinematic-drawer {
+  position: fixed;
+  top: 0;
+  right: -520px;
+  width: 520px;
+  max-width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.95);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-smooth);
+  box-shadow: -20px 0 40px rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+}
+
+.cinematic-drawer.active {
+  right: 0;
+}
+
+body.theme-femme .cinematic-drawer {
+  background: rgba(255, 245, 246, 0.98);
+  border-left: 1px solid rgba(251, 113, 133, 0.15);
+  color: #1c1917;
+  box-shadow: -20px 0 40px rgba(251, 113, 133, 0.05);
+}
+
+.cinematic-header {
+  padding: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body.theme-femme .cinematic-header {
+  border-bottom-color: rgba(251, 113, 133, 0.1);
+}
+
+.cinematic-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.close-cinematic-btn {
+  font-size: 2rem;
+  color: #ffffff;
+  transition: var(--transition-fast);
+  line-height: 1;
+}
+
+body.theme-femme .close-cinematic-btn {
+  color: #1c1917;
+}
+
+.close-cinematic-btn:hover {
+  color: var(--femme-accent);
+  transform: rotate(90deg);
+}
+
+.cinematic-drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cinematic-intro {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--homme-text-muted);
+}
+
+body.theme-femme .cinematic-intro {
+  color: var(--femme-text-muted);
+}
+
+.backdrop-control-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+}
+
+.apply-backdrop-btn {
+  background: transparent;
+  border: 1px solid var(--femme-accent);
+  color: var(--femme-accent);
+  padding: 0.8rem 1.8rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: bold;
+  transition: var(--transition-smooth);
+  width: 100%;
+  cursor: pointer;
+}
+
+.apply-backdrop-btn:hover, .apply-backdrop-btn.active {
+  background: var(--femme-accent);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(251, 113, 133, 0.3);
+}
+
+.concept-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-fast);
+}
+
+body.theme-femme .concept-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(251, 113, 133, 0.1);
+}
+
+.concept-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+body.theme-femme .concept-card:hover {
+  border-color: rgba(251, 113, 133, 0.25);
+  box-shadow: 0 10px 25px rgba(251, 113, 133, 0.08);
+}
+
+.concept-visual-container {
+  width: 100%;
+  height: 220px;
+  background: #000;
+  overflow: hidden;
+  position: relative;
+}
+
+.concept-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.concept-card:hover .concept-visual-img {
+  transform: scale(1.05);
+}
+
+.concept-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.concept-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+
+.concept-subtitle {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--femme-accent);
+  letter-spacing: 0.1em;
+}
+
+.concept-prompt-text {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--homme-text-muted);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+body.theme-femme .concept-prompt-text {
+  color: var(--femme-text-muted);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(251, 113, 133, 0.05);
+}
+
+.copy-prompt-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  text-align: center;
+}
+
+body.theme-femme .copy-prompt-btn {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #1c1917;
+}
+
+.copy-prompt-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+body.theme-femme .copy-prompt-btn:hover {
+  background: var(--femme-text);
+  color: #ffffff;
+}
+
+/* Backdrop Mode styles */
+.hero-split-container {
+  transition: var(--transition-smooth);
+}
+
+.hero-split-container.show-combined-backdrop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('assets/hero/combined_split.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  opacity: 1;
+  transition: var(--transition-smooth);
+}
+
+.hero-split-container.show-combined-backdrop .hero-panel,
+.hero-split-container.show-combined-backdrop .split-divider {
+  opacity: 0.0;
+  pointer-events: none;
+  z-index: 0;
+  transition: var(--transition-smooth);
+}
+
+/* If screen is mobile/responsive, make sure combined split background covers elegantly */
+@media (max-width: 768px) {
+  .cinematic-drawer {
+    width: 100vw;
+  }
+}
