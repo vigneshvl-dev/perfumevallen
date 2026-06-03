@@ -619,12 +619,222 @@ section {
   z-index: 1;
 }
 
-.hero-bottle {
-  width: 70%;
-  max-height: 80vh;
-  object-fit: contain;
+/* Interactive 3D CSS Bottles */
+.interactive-bottle-wrapper {
+  perspective: 1200px;
+  margin-bottom: 3.5rem;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 320px;
+  width: 220px;
+}
+
+.interactive-bottle-container {
+  width: 105px;
+  height: 250px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* 360-degree rotation animation class */
+.interactive-bottle-container.rotate-active {
+  animation: rotateY360 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes rotateY360 {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* Bottle Cap */
+.bottle-cap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 85px;
+  border-radius: 52px 52px 0 0;
+  z-index: 4;
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  transform-origin: bottom center;
+}
+
+/* Cap Opened State */
+.interactive-bottle-container.cap-open .bottle-cap {
+  transform: translateY(-65px) rotate(-8deg);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+body.theme-femme .interactive-bottle-container.cap-open .bottle-cap {
+  box-shadow: 0 15px 30px rgba(251, 113, 133, 0.2);
+}
+
+/* Inner Nozzle revealed when cap lifts */
+.bottle-nozzle {
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 30px;
+  background: linear-gradient(90deg, #1f1f1f 0%, #444 40%, #555 50%, #333 60%, #111 100%);
   z-index: 2;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 1px 1px 3px rgba(255,255,255,0.1), 0 5px 10px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interactive-bottle-container.cap-open .bottle-nozzle {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nozzle-tip {
+  width: 8px;
+  height: 8px;
+  background: #050505;
+  border-radius: 50%;
+  border: 1.5px solid #222;
+  box-shadow: inset 0 0 2px rgba(255,255,255,0.2);
+}
+
+/* Bottle Body */
+.bottle-body {
+  position: absolute;
+  top: 83px; /* Slightly overlaps the cap seam */
+  left: 0;
+  width: 100%;
+  height: 167px;
+  border-radius: 0 0 52px 52px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+
+/* Metallic central trim reflection */
+.bottle-body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.bottle-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+  z-index: 5;
   pointer-events: none;
+}
+
+/* Brand Texts on Bottle */
+.bottle-brand {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  font-weight: 800;
+  color: #ffffff;
+  z-index: 6;
+  margin-bottom: 0.25rem;
+  pointer-events: none;
+}
+
+.bottle-label {
+  font-family: var(--font-sans);
+  font-size: 0.5rem;
+  letter-spacing: 0.4em;
+  font-weight: 600;
+  color: #a3a3a3;
+  z-index: 6;
+  pointer-events: none;
+}
+
+/* --- THE NOIR DISRUPTION (Homme Bottle Styles) --- */
+#homme-bottle-container .bottle-cap {
+  background: linear-gradient(90deg, #121212 0%, #2a2a2a 35%, #3a3a3a 50%, #1e1e1e 65%, #0a0a0a 100%);
+  border-bottom: 2px solid #2d2d2d;
+  box-shadow: inset 1.5px 1.5px 3px rgba(255,255,255,0.1), inset -1.5px -1.5px 3px rgba(0,0,0,0.6), 0 10px 20px rgba(0,0,0,0.5);
+}
+
+#homme-bottle-container .cap-line {
+  position: absolute;
+  bottom: 8px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: rgba(226, 232, 240, 0.15);
+}
+
+#homme-bottle-container .bottle-body {
+  background: linear-gradient(90deg, #0d0d0d 0%, #1a1a1a 35%, #262626 50%, #151515 65%, #080808 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 1.5px 1.5px 3px rgba(255,255,255,0.08), inset -1.5px -1.5px 3px rgba(0,0,0,0.7), 0 15px 30px rgba(0,0,0,0.6);
+}
+
+#homme-bottle-container .bottle-body::after {
+  background: rgba(226, 232, 240, 0.25);
+  box-shadow: 0 0 8px rgba(226, 232, 240, 0.6);
+}
+
+/* --- THE PEARL ORBIT (Femme Bottle Styles) --- */
+#femme-bottle-container .bottle-cap {
+  background: linear-gradient(90deg, #d97706 0%, #fda4af 35%, #ffe4e6 50%, #fb7185 65%, #d97706 100%);
+  border-bottom: 2px solid rgba(251, 113, 133, 0.2);
+  box-shadow: inset 1.5px 1.5px 3px rgba(255,255,255,0.25), inset -1.5px -1.5px 3px rgba(0,0,0,0.3), 0 10px 20px rgba(251, 113, 133, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#femme-bottle-container .cap-rose-emblem {
+  font-size: 0.85rem;
+  margin-top: -12px;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+}
+
+#femme-bottle-container .bottle-body {
+  background: linear-gradient(90deg, #f43f5e 0%, #fda4af 35%, #ffffff 50%, #fda4af 65%, #e11d48 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 1.5px 1.5px 3px rgba(255,255,255,0.3), inset -1.5px -1.5px 3px rgba(0,0,0,0.2), 0 15px 30px rgba(251, 113, 133, 0.15);
+}
+
+#femme-bottle-container .bottle-body::after {
+  background: rgba(251, 113, 133, 0.35);
+  box-shadow: 0 0 8px rgba(251, 113, 133, 0.5);
+}
+
+#femme-bottle-container .bottle-glow {
+  background: radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.45) 0%, transparent 60%);
+}
+
+#femme-bottle-container .bottle-nozzle {
+  background: linear-gradient(90deg, #ffe4e6 0%, #fda4af 40%, #fb7185 50%, #f43f5e 60%, #fda4af 100%);
+  box-shadow: inset 1px 1px 3px rgba(255,255,255,0.3), 0 5px 10px rgba(251, 113, 133, 0.2);
+}
+
+#femme-bottle-container .nozzle-tip {
+  border-color: #fda4af;
 }
 
 /* Fade-up animation */

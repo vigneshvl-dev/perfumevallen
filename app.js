@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScentLab();
   initMiniCart();
   initCinematicConcepts();
+  initInteractiveBottles();
 });
 
 /* ==========================================================================
@@ -1133,3 +1134,74 @@ window.copyPromptText = function(elementId) {
     showToast("❌ Clipboard access denied.");
   });
 };
+
+/* ==========================================================================
+   8. 3D INTERACTIVE CSS BOTTLES (SPIN & CAP OPEN)
+   ========================================================================== */
+function initInteractiveBottles() {
+  const hommeContainer = document.getElementById('homme-bottle-container');
+  const hommeCap = document.getElementById('homme-bottle-cap');
+  const hommeBody = document.getElementById('homme-bottle-body');
+
+  const femmeContainer = document.getElementById('femme-bottle-container');
+  const femmeCap = document.getElementById('femme-bottle-cap');
+  const femmeBody = document.getElementById('femme-bottle-body');
+
+  // Handle Homme Bottle Cap Open/Close
+  if (hommeCap && hommeContainer) {
+    hommeCap.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = hommeContainer.classList.toggle('cap-open');
+      if (isOpen) {
+        showToast("🖤 Vallen Homme Atomizer Cap opened.");
+        if (window.triggerHommeSpray) {
+          setTimeout(window.triggerHommeSpray, 400);
+        }
+      } else {
+        showToast("🖤 Vallen Homme Atomizer Cap closed.");
+      }
+    });
+  }
+
+  // Handle Homme Bottle Body 360-degree rotation
+  if (hommeBody && hommeContainer) {
+    hommeBody.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (hommeContainer.classList.contains('rotate-active')) return;
+      hommeContainer.classList.add('rotate-active');
+      showToast("🖤 Rotating Vallen Homme 360°...");
+      setTimeout(() => {
+        hommeContainer.classList.remove('rotate-active');
+      }, 1200);
+    });
+  }
+
+  // Handle Femme Bottle Cap Open/Close
+  if (femmeCap && femmeContainer) {
+    femmeCap.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = femmeContainer.classList.toggle('cap-open');
+      if (isOpen) {
+        showToast("🌸 Vallen Femme Atomizer Cap opened.");
+        if (window.triggerFemmeSpray) {
+          setTimeout(window.triggerFemmeSpray, 400);
+        }
+      } else {
+        showToast("🌸 Vallen Femme Atomizer Cap closed.");
+      }
+    });
+  }
+
+  // Handle Femme Bottle Body 360-degree rotation
+  if (femmeBody && femmeContainer) {
+    femmeBody.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (femmeContainer.classList.contains('rotate-active')) return;
+      femmeContainer.classList.add('rotate-active');
+      showToast("🌸 Rotating Vallen Femme 360°...");
+      setTimeout(() => {
+        femmeContainer.classList.remove('rotate-active');
+      }, 1200);
+    });
+  }
+}
