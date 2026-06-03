@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProductCanvases();
   initScentLab();
   initMiniCart();
+  initCinematicConcepts();
 });
 
 /* ==========================================================================
@@ -1074,3 +1075,61 @@ function showToast(message) {
     toast.classList.remove('active');
   }, 3500);
 }
+
+/* ==========================================================================
+   7. CINEMATIC CONCEPTS INTERACTIVITY & CLIPBOARD
+   ========================================================================== */
+function initCinematicConcepts() {
+  const cinematicBtn = document.getElementById('cinematic-btn');
+  const overlay = document.getElementById('cinematic-drawer-overlay');
+  const drawer = document.getElementById('cinematic-drawer');
+  const closeBtn = document.getElementById('close-cinematic-btn');
+  const backdropBtn = document.getElementById('apply-backdrop-btn');
+  const heroContainer = document.getElementById('hero');
+
+  if (!cinematicBtn || !drawer || !overlay || !closeBtn) return;
+
+  function openDrawer() {
+    overlay.classList.add('active');
+    drawer.classList.add('active');
+  }
+
+  function closeDrawer() {
+    overlay.classList.remove('active');
+    drawer.classList.remove('active');
+  }
+
+  cinematicBtn.addEventListener('click', openDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+
+  if (backdropBtn && heroContainer) {
+    backdropBtn.addEventListener('click', () => {
+      const isApplied = heroContainer.classList.toggle('show-combined-backdrop');
+      if (isApplied) {
+        backdropBtn.classList.add('active');
+        backdropBtn.textContent = 'Remove Split-Screen Backdrop';
+        showToast("🖼️ Split-Screen Cinematic Backdrop applied to Hero!");
+      } else {
+        backdropBtn.classList.remove('active');
+        backdropBtn.textContent = 'Apply Split-Screen Backdrop';
+        showToast("🔄 Returned to interactive Canvas panels.");
+      }
+    });
+  }
+}
+
+// Global utility for copy to clipboard
+window.copyPromptText = function(elementId) {
+  const textElement = document.getElementById(elementId);
+  if (!textElement) return;
+
+  const promptText = textElement.textContent || textElement.innerText;
+  
+  navigator.clipboard.writeText(promptText).then(() => {
+    showToast("📋 Cinematic Video Prompt copied to clipboard!");
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+    showToast("❌ Clipboard access denied.");
+  });
+};
