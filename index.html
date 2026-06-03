@@ -26,6 +26,20 @@
     </ul>
     
     <div class="nav-actions">
+      <!-- Cinematic concepts button -->
+      <button class="icon-btn cinematic-btn" id="cinematic-btn" aria-label="Cinematic Concepts" title="View Cinematic Video Concepts">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
+          <line x1="7" y1="2" x2="7" y2="22" />
+          <line x1="17" y1="2" x2="17" y2="22" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <line x1="2" y1="7" x2="7" y2="7" />
+          <line x1="2" y1="17" x2="7" y2="17" />
+          <line x1="17" y1="17" x2="22" y2="17" />
+          <line x1="17" y1="7" x2="22" y2="7" />
+        </svg>
+      </button>
+
       <!-- Elegant Theme Toggle Button (Noir vs Femme Pink) -->
       <button class="icon-btn theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Femme Pink Theme" title="Switch to Femme Pink Mode">
         <svg class="icon-noir" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block;">
@@ -53,6 +67,7 @@
     
     <!-- Homme (Noir) Hero Panel -->
 <div class="hero-panel panel-homme">
+  <canvas id="homme-bg-canvas" class="panel-canvas"></canvas>
   <div class="panel-content">
     <img src="assets/hero/noir_disruption.png" alt="THE NOIR DISRUPTION" class="hero-bottle">
     <h1 class="panel-title">THE NOIR DISRUPTION</h1>
@@ -68,6 +83,7 @@
     
     <!-- Femme Hero Panel -->
 <div class="hero-panel panel-femme">
+  <canvas id="femme-bg-canvas" class="panel-canvas"></canvas>
   <div class="panel-content">
     <img src="assets/hero/pearl_orbit.png" alt="THE PEARL ORBIT" class="hero-bottle">
     <h1 class="panel-title">THE PEARL ORBIT</h1>
@@ -397,6 +413,62 @@
       <button class="checkout-btn" id="checkout-btn">Secure Checkout</button>
       <div class="cart-payment-methods">
         <span style="font-size: 0.65rem; letter-spacing: 0.15em; color: #a3a3a3;">GPAY • PAYTM • PAYPAL • EXPRESS DELIVERY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cinematic Concepts Modal -->
+  <div class="cinematic-drawer-overlay" id="cinematic-drawer-overlay"></div>
+  <div class="cinematic-drawer" id="cinematic-drawer">
+    <div class="cinematic-header">
+      <div class="cinematic-title">CINEMATIC VIDEO CONCEPTS</div>
+      <button class="close-cinematic-btn" id="close-cinematic-btn" aria-label="Close Showcase">&times;</button>
+    </div>
+    <div class="cinematic-drawer-content">
+      <p class="cinematic-intro">We formulated three premium cinematic video/animation prompts to capture the essence of our scent chemistry. Explore them below, copy the prompts to use in your favorite AI video generators, or toggle the combined full-page concept background.</p>
+      
+      <!-- Backdrop Apply Button -->
+      <div class="backdrop-control-wrapper">
+        <button class="apply-backdrop-btn" id="apply-backdrop-btn">Apply Split-Screen Backdrop</button>
+      </div>
+
+      <!-- Slide 1 -->
+      <div class="concept-card">
+        <div class="concept-visual-container">
+          <img src="assets/hero/noir_disruption.png" class="concept-visual-img" alt="Noir Disruption concept render">
+        </div>
+        <div class="concept-info">
+          <h4 class="concept-title">Concept 1: The Noir Disruption</h4>
+          <span class="concept-subtitle">Homme Canister (Obsidian & Silver)</span>
+          <p class="concept-prompt-text" id="prompt-text-1">A cinematic, ultra-detailed product video advertisement for a luxury square-cut perfume bottle made of matte black obsidian stone and dark cracked crystal. The video begins with the bottle completely shattered into hundreds of geometric shards floating in zero-gravity space with swirling dark smoke. Suddenly, a reverse-motion shockwave occurs, pulling all the floating fragments backward in time, seamlessly assembling them into a perfect, flawless bottle. The moment the bottle pieces join together, the top spray nozzle fires a high-velocity, dramatic blast of metallic dark silver mist straight toward the camera. Moody studio lighting, high contrast, slow motion 60fps, photorealistic 8k, luxury commercial style.</p>
+          <button class="copy-prompt-btn" onclick="copyPromptText('prompt-text-1')">Copy Video Prompt</button>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="concept-card">
+        <div class="concept-visual-container">
+          <img src="assets/hero/pearl_orbit.png" class="concept-visual-img" alt="Pearl Orbit concept render">
+        </div>
+        <div class="concept-info">
+          <h4 class="concept-title">Concept 2: The Pearl Orbit</h4>
+          <span class="concept-subtitle">Femme Canister (Rose Gold & Chrome)</span>
+          <p class="concept-prompt-text" id="prompt-text-2">A luxury commercial product video for a crystalline rose-gold and bright chrome perfume bottle with an intricate rose-sculpted metallic cap. The video opens with the bottle broken into delicate, glowing pink glass shards floating weightlessly in an elegant, airy white space. In a beautiful fluid reverse-motion animation, the shards effortlessly orbit and fuse back together to form the complete luxury bottle. As the last crystal piece joins, a beautiful, soft cloud of translucent pearl liquid droplets and glowing pink mist gently sprays outward, drifting gracefully around the bottle. Soft daylight refractions, bright elegant studio aesthetic, hyper-detailed glass textures, hyperrealistic, 8k resolution, smooth slow-motion.</p>
+          <button class="copy-prompt-btn" onclick="copyPromptText('prompt-text-2')">Copy Video Prompt</button>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="concept-card">
+        <div class="concept-visual-container">
+          <img src="assets/hero/combined_split.png" class="concept-visual-img" alt="Combined Split Concept render">
+        </div>
+        <div class="concept-info">
+          <h4 class="concept-title">Concept 3: Combined Split-Screen</h4>
+          <span class="concept-subtitle">Full Page Background Loop</span>
+          <p class="concept-prompt-text" id="prompt-text-3">A split-screen cinematic web background banner loop. The left 50% of the frame is deep matte charcoal black; the right 50% is soft minimalist pastel pink. In perfect synchronization, a black stone bottle on the left and a pink crystal bottle on the right reassemble themselves from floating floating shards in an anti-gravity field. Once completely formed, they simultaneously emit beautiful contrasting sprays: a sharp silver mist on the left and a soft glowing pearl mist on the right. Seamless loop, ultra-premium commercial quality, 8k, Unreal Engine 5 aesthetic, clean composition.</p>
+          <button class="copy-prompt-btn" onclick="copyPromptText('prompt-text-3')">Copy Video Prompt</button>
+        </div>
       </div>
     </div>
   </div>
